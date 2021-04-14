@@ -1,0 +1,145 @@
+body{
+	background-color: #E9F4F6;
+}
+.navbar-custom {
+    background-color: rgba(202, 202, 202, 0.58);
+}
+
+#search-bar{
+	float: right;
+}
+
+#btns{
+	 margin: auto;
+  	width: 50%;
+}
+#home-btn{
+	padding-right: 15px;
+}
+#compare-btn{
+	color: #000000;
+	padding-right: 15px;
+}
+#navbarDropdown{
+	color: black;
+}
+.navbar-custom .nav-item.active .nav-link{
+	color: #000000;
+}
+.navbar-custom .nav-item:hover .nav-link {
+    background-color: #00D9E7;
+}
+
+#compare-btn:hover {
+	background-color: #00D9E7;
+}
+
+.navbar-custom .dropdown-item {
+    color: #000000;
+}
+
+.navbar-custom .dropdown-item:hover,
+.navbar-custom .dropdown-item:focus {
+    background-color: #00D9E7;
+}
+
+#aqi-nav-title{
+	font-family: "Open Sans";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	line-height: 48px;
+
+}
+#city-title{
+	text-align: center;
+	font-family: "Open Sans";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 41px;
+}
+
+#aqi-city{
+	text-align: center;
+	font-family: "Open Sans";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 41px;
+	background-color: rgba(252,229,20,0.75);
+	width: 150px;
+	border-radius: 11px;
+
+
+}
+	
+.pollutant-title{
+
+	text-align: center;
+	display: inline;
+	font-family: "Open Sans";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 25px;
+	padding-left: 5%;
+
+
+
+}
+#pollutant-title-list{
+	padding-left: 17%;
+}
+
+	
+.pollutant-value{
+
+	text-align: center;
+	display: inline;
+	font-family: "Open Sans";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 25px;
+	
+
+
+}
+#pollutant-value-list{
+	padding-left: 17%;
+}
+
+#value1{
+	padding-left: 6.5%;	
+}
+
+#value2{
+	padding-left: 6.7%;	
+}
+#value3{
+	padding-left: 9%;	
+}
+
+#value4{
+	padding-left: 7.5%;	
+}
+#curve_chart{
+	width: 45%; 
+	height: 346px; 
+	padding-left: 10%; 
+	float: left;
+}
+#health-tips{
+	float: right;
+	width: 25%;
+	height: 173px;
+	background-color: rgba(252, 229, 20, 0.46);
+	margin-right: 5%;
+	text-align: center; 
+}
+
+#tips-list {
+  list-style-type: "-";
+  text-align: left;
+}
