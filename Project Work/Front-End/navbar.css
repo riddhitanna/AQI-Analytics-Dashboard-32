@@ -1,0 +1,51 @@
+/*Contributor-Jack-2001*/
+.navbar-custom {
+    background-color: rgba(202, 202, 202, 0.58);
+
+}
+
+#search-bar{
+	float: right;
+}
+
+#btns{
+	 margin: auto;
+  	width: 50%;
+}
+#home-btn{
+	padding-right: 15px;
+}
+#compare-btn{
+	color: #000000;
+	padding-right: 15px;
+}
+#navbarDropdown{
+	color: black;
+}
+.navbar-custom .nav-item.active .nav-link{
+	color: #000000;
+}
+.navbar-custom .nav-item:hover .nav-link {
+    background-color: #00D9E7;
+}
+
+#compare-btn:hover {
+	background-color: #00D9E7;
+}
+
+.navbar-custom .dropdown-item {
+    color: #000000;
+}
+
+.navbar-custom .dropdown-item:hover,
+.navbar-custom .dropdown-item:focus {
+    background-color: #00D9E7;
+}
+#aqi-nav-title{
+	font-family: "Open Sans";
+font-style: normal;
+font-weight: normal;
+font-size: 35px;
+line-height: 48px;
+
+}
