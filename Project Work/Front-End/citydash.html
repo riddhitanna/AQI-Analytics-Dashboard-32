@@ -17,7 +17,10 @@
 	<link rel="stylesheet" type="text/css" href="citydash.css">
 
 
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
@@ -42,6 +45,8 @@
         chart.draw(data, options);
       }
     </script>
+ 	
+ 	
 </head>
 
 <body>
@@ -49,7 +54,7 @@
 	<nav class="navbar navbar-expand-sm navbar-custom">
     <p id="aqi-nav-title">AQI
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
-        <i class="fas fa-bars"></i>
+        <img style="padding-left: 60px;padding-bottom: 15px;" src="https://img.icons8.com/android/30/000000/menu.png"/>
     </button>
     <div class="navbar-collapse collapse" id="navbarCustom">
         <div class="conatiner" id="btns">
@@ -88,7 +93,7 @@
 <div class="container" id="city-title">City</div>
 
 <div class="container" id="aqi-city"> 
-	AQI : -1
+	AQI : 10
 </div>
 <br>
 <br>
@@ -96,8 +101,8 @@
 	<ul>
 	  <li class="pollutant-title">PM2.5</li>
 	  <li class="pollutant-title">PM10</li>
-	  <li class="pollutant-title">Temp</li>
 	  <li class="pollutant-title">Humidity</li>
+	  <li class="pollutant-title">Temp</li>
 	  
 	</ul>
 </div>
@@ -116,12 +121,69 @@
 
 <div class="container" id="health-tips">
 	<h3>Health Tips</h3>
-	<ul id="tips-list">
-    <li>Wear a mask if you are allergic to dust.</li>
-    <li>Stay hydrated.</li>
-    <li>Outdoor activities recommended.</li>
-    
-  </ul>
+	<div>
+		<img class="left-icon" id="icon-1" src="https://img.icons8.com/ios-glyphs/30/000000/beach-soccer.png"/ >
+
+		<img class="right-icon" id="icon-2" src="https://img.icons8.com/material-rounded/30/000000/airodynamic.png"/>
+	</div>
+<br>
+<br>
+	<div>
+		<div class="left-content" id="line-1"> Outdoor activities recommended</div>
+
+		<div class="right-content" id="line-2">Air purifier recommended for sensitive groups</div>
+	</div>
+<br>
+<br>
+<br>
+<br>
+		<div>
+			<img class="left-icon" id="icon-3" src="https://img.icons8.com/ios-glyphs/30/000000/protection-mask.png"/>
+			<img class="right-icon" id="icon-4" src="https://img.icons8.com/ios-filled/30/000000/air-conditioner.png"/>
+		</div>
+<br>
+<br>
+	<div>
+		<div class="left-content" id="line-3"> Pollution Mask required</div>
+
+		<div class="right-content" id="line-4">Ventilation close windows</div>
+	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+  <ul class="display-container">
+   
+
+    <li class="note-display" data-note="155">
+      <div class="circle">
+        <svg width="84" height="84" class="circle__svg">
+          <circle id="jack-circle" cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
+          <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
+        </svg>
+
+        <div class="percent">
+          <span class="percent__int">0</span>
+        </div>
+      </div>
+
+      <span class="label">AQI</span>
+    </li>
+  </ul>
+
+
+
+
+  <script src="./citydash.js"></script>
 </body>
 </html>
+
+
+
