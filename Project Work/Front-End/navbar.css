@@ -1,4 +1,10 @@
 /*Contributor-Jack-2001*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+body{
+	background-color: #E9F4F6;
+	font-family: "Open Sans";
+	
+}
 .navbar-custom {
     background-color: rgba(202, 202, 202, 0.58);
 
@@ -8,8 +14,13 @@
 	float: right;
 }
 
+
+.nav-link{
+	font-size: 20px;
+}
+
 #btns{
-	 margin: auto;
+	 margin-left: 10%;
   	width: 50%;
 }
 #home-btn{
@@ -26,11 +37,12 @@
 	color: #000000;
 }
 .navbar-custom .nav-item:hover .nav-link {
-    background-color: #00D9E7;
+    
+	text-decoration: underline;
 }
 
 #compare-btn:hover {
-	background-color: #00D9E7;
+	text-decoration: underline;
 }
 
 .navbar-custom .dropdown-item {
@@ -39,13 +51,14 @@
 
 .navbar-custom .dropdown-item:hover,
 .navbar-custom .dropdown-item:focus {
-    background-color: #00D9E7;
+    
+	text-decoration: underline;
 }
 #aqi-nav-title{
 	font-family: "Open Sans";
-font-style: normal;
-font-weight: normal;
-font-size: 35px;
-line-height: 48px;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	line-height: 48px;
 
 }
