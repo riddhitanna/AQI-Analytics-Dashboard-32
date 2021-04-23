@@ -1,0 +1,111 @@
+.navbar-custom {
+    background: color #e9f4f7;
+}
+/* h1{ 
+	text-align: center;
+	font-weight: bold ;
+	font-family: 'Open Sans';
+	font-size : 30px ;
+	line-height: 40.85px;
+} */
+
+
+
+
+/* #search-bar{
+	float: right;
+	padding: 10px;
+}
+
+#btns{
+	 margin: auto;
+  	width: 50%;
+}
+#home-btn{
+	padding-right: 15px;
+}
+#compare-btn{
+	color: #000000;
+	padding-right: 15px;
+}
+#navbarDropdown{
+	color: black;
+	font-size: 18px;
+
+}
+.navbar{
+	background-color:rgba(202, 202, 202, 0.58);;
+	display: flex;
+}
+
+.navbar-custom .nav-item.active .nav-link{
+	color: #000000;
+	margin: 0 50px;
+	font-size: 18px;
+}
+.navbar-custom .nav-item:hover .nav-link {
+    background-color: #00D9E7;
+	
+}
+
+#compare-btn:hover {
+	background-color: #00D9E7;
+}
+
+.navbar-custom .dropdown-item {
+    color: #000000;
+	
+}
+
+.navbar-custom .dropdown-item:hover,
+.navbar-custom .dropdown-item:focus {
+    background-color: #00D9E7;
+}
+#aqi-nav-title{
+font-family: "Open Sans";
+font-style: normal;
+font-weight: normal;
+font-size: 35px;
+line-height: 40px;
+
+}
+
+@media (max-width: 600px) {
+
+	#search-bar{
+		padding: 10px;
+	}
+
+} */
+
+body {margin: 0;}
+
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+ul.topnav li a.active {background-color: #4CAF50;}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}
+
