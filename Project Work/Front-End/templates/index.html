@@ -1,51 +1,59 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>AQI_demo</title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<title>AQI Analytics</title>
+	
 
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+	<script src="https://kit.fontawesome.com/3c90917715.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="../static/navbar.css">
 </head>
 
 <body>
-  <nav class="row" style="background: #337ab7; color: white;">
-    <h1 class="col-md-3 text-center">AQI_demo</h1>
-  </nav>
-  <br />
-  <br />
-  <center class="row">
-    <form method="post" class="col-md-6 col-md-offset-3">
-      <div class="input-group">
-        <input type="text" class="form-control" name="city" placeholder="Search">
-        <div class="input-group-btn">
-          <button class="btn btn-primary" type="submit">
-            <i class="glyphicon glyphicon-search"></i>
-          </button>
-        </div>
-        <form>
-  </center>
-  <div class="row">
-    {% if data%}
-    <div class="col-md-6 col-md-offset-3">
+	<nav class="navbar navbar-expand-sm navbar-custom">
+    <p id="aqi-nav-title">AQI
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
+        <img style="padding-left: 60px;padding-bottom: 15px;" src="https://img.icons8.com/android/30/000000/menu.png"/>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarCustom">
+        <div class="conatiner" id="btns">
+	        <ul class="navbar-nav">
 
-      <h3>cur_aqi : {{data}}</h3>
-      <!--<h3>cur_aqi : {{data.station_name}}</h3>
-        <h3>station_name: {{data.station_name}}</h3>
-        <h3>Latlon : {{data.Latlon}}</h3>
-          <h5>City name : {{data.cityname}}</h5>
-        <h5>pressure : {{data.pressure}} </h5>
-        <h5>humidity : {{data.humidity}}</h5>-->
+	            <li class="nav-item active" id="home-btn">
+	                <a class="nav-link" href="/main">Home</a>
+	            </li>
+	            <li class="nav-item dropdown" id="compare-btn">
+	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Compare </a>
+	                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	                    <a class="dropdown-item" href="/cvc">Compare Cities</a>
+	                    <div class="dropdown-divider"></div>
+	                    <a class="dropdown-item" href="/svs">Compare States</a>
+	                    
+	                </div>
+	            </li>
+	            <li class="nav-item active" id="myloc-btn">
+	                <a class="nav-link" href="#">My Location</a>
+	            </li>
+
+	        </ul>
+	        </div>
+          <div id="search-bar">
+          	
+		 <form class="form-inline" onsubmit="checkinp()" action="" id="form-search">
+    		<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    		<button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
+  		</form>
+
+          </div>
     </div>
-    {% endif %}
-  </div>
+</nav>
 </body>
-
 </html>

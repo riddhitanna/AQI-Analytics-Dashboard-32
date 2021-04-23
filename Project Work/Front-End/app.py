@@ -8,14 +8,15 @@ import sys
 app = Flask(__name__)
 
 reload(sys)
-#sys.setdefaultencoding('utf-8')
-
 @app.route('/',methods = ['POST','GET'])
+@app.route('/main',methods = ['POST','GET'])
 def now():
     if request.method == 'POST':
         cur_city = request.form['any']
         return redirect(url_for('singular_city',city_name=cur_city))
-    return render_template('navbar.html')
+    return render_template('main.html')
+
+    
 
 @app.route('/citydash/<string:city_name>',methods = ['POST','GET'])
 def singular_city(city_name):
@@ -44,6 +45,10 @@ def singular_city(city_name):
 @app.route('/cvc')
 def cvc():
         return render_template('cityvscity.html')
+
+@app.route('/svs')
+def svs():
+        return render_template('statevsstate.html')
 
 if __name__ == '__main__':
     app.run(debug = True)
