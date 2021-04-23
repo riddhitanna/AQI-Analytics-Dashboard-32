@@ -2,13 +2,13 @@ from flask import Flask, render_template, request, redirect,url_for
 import requests
 import json
 import urllib
+from importlib import reload
 import sys
-
 
 app = Flask(__name__)
 
 reload(sys)
-sys.setdefaultencoding('utf-8')
+#sys.setdefaultencoding('utf-8')
 
 @app.route('/',methods = ['POST','GET'])
 def now():

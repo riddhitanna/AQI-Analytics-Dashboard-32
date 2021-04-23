@@ -14,24 +14,22 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	
 	<script src="https://kit.fontawesome.com/3c90917715.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="citydash.css">
+	<link rel="stylesheet" type="text/css" href="../styles/statevsstate.css">
 
 
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'City1'],
-          ['2004',  40],
-          ['2005',  50],
-          ['2006',  60],
-          ['2007',  70]
+          ['Year', 'State1', 'State2'],
+          ['2004',  40,      50],
+          ['2005',  50,      60],
+          ['2006',  60,      90],
+          ['2007',  70,      100]
         ]);
 
         var options = {
@@ -45,12 +43,10 @@
         chart.draw(data, options);
       }
     </script>
- 	
- 	
 </head>
 
 <body>
-<!--Contributor-Jack-2001-->
+	<!--Contributor-Jack-2001-->
 	<nav class="navbar navbar-expand-sm navbar-custom">
     <p id="aqi-nav-title">AQI
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
@@ -64,11 +60,11 @@
 	                <a class="nav-link" href="#">Home</a>
 	            </li>
 	            <li class="nav-item dropdown" id="compare-btn">
-	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Compare </a>
+	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <b>Compare </b></a>
 	                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	                    <a class="dropdown-item" href="#">City vs City</a>
 	                    <div class="dropdown-divider"></div>
-	                    <a class="dropdown-item" href="#">State vs State</a>
+	                    <a class="dropdown-item" href="#"><b>State vs State</b></a>
 	                    
 	                </div>
 	            </li>
@@ -89,101 +85,36 @@
     </div>
 </nav>
 
-
-<div class="container" id="city-title">City</div>
-
-<div class="container" id="aqi-city"> 
-	AQI : 10
-</div>
-<br>
-<br>
-<div class="container" id="pollutant-title-list"> 
-	<ul>
-	  <li class="pollutant-title">PM2.5</li>
-	  <li class="pollutant-title">PM10</li>
-	  <li class="pollutant-title">Humidity</li>
-	  <li class="pollutant-title">Temp</li>
-	  
-	</ul>
-</div>
-
-<div class="container" id="pollutant-value-list"> 
-	<ul>
-	  <li class="pollutant-value" id="value1">100</li>
-	  <li class="pollutant-value" id="value2">10</li>
-	  <li class="pollutant-value" id="value3">10</li>
-	  <li class="pollutant-value" id="value4">10</li>
-	  
-	</ul>
-</div>
-
-<div class="container" id="curve_chart"></div>
-
-<div class="container" id="health-tips">
-	<h3>Health Tips</h3>
-	<div>
-		<img class="left-icon" id="icon-1" src="https://img.icons8.com/ios-glyphs/30/000000/beach-soccer.png"/ >
-
-		<img class="right-icon" id="icon-2" src="https://img.icons8.com/material-rounded/30/000000/airodynamic.png"/>
-	</div>
-<br>
-<br>
-	<div>
-		<div class="left-content" id="line-1"> Outdoor activities recommended</div>
-
-		<div class="right-content" id="line-2">Air purifier recommended for sensitive groups</div>
-	</div>
-<br>
-<br>
-<br>
-<br>
-		<div>
-			<img class="left-icon" id="icon-3" src="https://img.icons8.com/ios-glyphs/30/000000/protection-mask.png"/>
-			<img class="right-icon" id="icon-4" src="https://img.icons8.com/ios-filled/30/000000/air-conditioner.png"/>
+<form>
+	<div class="container">
+	  	<div class="form-row">
+	    	<div class="col-4">
+	      		<input type="text" class="form-control" placeholder="State">
+	    	</div>
+	   		<p>versus</p>
+	    	<div class="col-4">
+	      		<input type="text" class="form-control" placeholder="State">
+	    	</div>
+	    	<div>
+	    		<button class="btn btn-primary" type="submit">Compare</button>
+	    	</div>
 		</div>
-<br>
-<br>
-	<div>
-		<div class="left-content" id="line-3"> Pollution Mask required</div>
-
-		<div class="right-content" id="line-4">Ventilation close windows</div>
 	</div>
+</form>
+<br>
+<br>
+<div class="container" id="error-message"> Error: you have not entered a valid state.</div>
+
+<div class="container"> 
+	<ul class="list-unstyled">
+	  <li class="aqi-li">AQI : -1</li>
+	  <li class="aqi-li">AQI : -1</li>
+	  
+	</ul>
 </div>
+<br>
+<br>
 
-
-
-
-
-
-
-
-
-
-  <ul class="display-container">
-   
-
-    <li class="note-display" data-note="155">
-      <div class="circle">
-        <svg width="84" height="84" class="circle__svg">
-          <circle id="jack-circle" cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
-          <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
-        </svg>
-
-        <div class="percent">
-          <span class="percent__int">0</span>
-        </div>
-      </div>
-
-      <span class="label">AQI</span>
-    </li>
-  </ul>
-
-
-
-
-  <script src="./citydash.js"></script>
+<div class="container"> <div id="curve_chart" style="width: 50%; height: 346px;"></div></div>
 </body>
 </html>
-
-
-
