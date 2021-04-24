@@ -1,0 +1,135 @@
+<html>
+    <head>
+        <title>
+            State
+        </title>
+        <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+        <link rel="stylesheet" href="State_CSS.css">
+    </head>
+    <body>
+        <div id="state-select">
+            <label for="states">Select a state:</label>
+            <select name="states" id="states" type="text">
+                <option disabled selected value>select</option>
+            </select>
+        </div>
+
+        <div id="state_info">
+            <label for="State Name">State Name</label><br>
+            <label for="State AQI">State AQI index</label>
+        </div>
+        <br><br>
+
+        <div id="state_table">
+            <table>
+                <tr>
+                    <td> PM2.5</td>
+                    <td> PM10</td>
+                    <td> Humidity</td>
+                    <td> Temprature</td>
+                </tr>
+                <tr>
+                    <td> PM2.5 val</td>
+                    <td> PM10 val</td>
+                    <td> H val</td>
+                    <td> T val</td>
+                </tr>
+            </table>
+        </div>
+        <div id="common">
+            <div id="district-table">
+                <table id="dt">
+                    <tr>
+                        <td>CITIES</td>
+                        <td>STATUS</td>
+                        <td>AQI</td>
+                        <td>PM2.5</td>
+                        <td>PM10</td>
+                    </tr>
+                    <!-- Add district in for loop here-->
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="state-img">
+                <img id="state_image" src="https://files.prokerala.com/maps/gujarat-map.jpg">
+            </div>
+        </div>
+        <div id="plots">
+            <div id='bargraph'></div>
+            <div id='bargraph-2'></div>
+            <div id='bargraph-3'></div>
+            <div id='bargraph-4'></div>
+        </div>
+        <script src='State_JS.js'></script>
+    </body>
+
+</html>
