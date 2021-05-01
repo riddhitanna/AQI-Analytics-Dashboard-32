@@ -13,26 +13,31 @@ displays.forEach(display => {
 
 
   let jackcolor=document.getElementById('jack-circle');
-  
+
   if(note>300)
   {
     jackcolor.style.stroke="rgba(209, 24, 24, 1)";
+    
   }
   else if(note>200 && note<=300)
   {
-    jackcolor.style.stroke="rgba(238, 77, 135, 1)"; 
+    jackcolor.style.stroke="rgba(238, 77, 135, 1)";
+    
   }
   else if(note>150 && note<=200)
   {
     jackcolor.style.stroke="rgba(208, 106, 11, 1)";
+    jackaqi.style.color=jackcolor.style.stroke;
   }
   else if(note>100 && note<=150)
   {
     jackcolor.style.stroke="rgba(248, 181, 52, 1)";
+
   }
   else if(note>50 && note<=100)
   {
     jackcolor.style.stroke="rgba(252, 229, 20, 1)";
+
     document.getElementById('icon-1').src="https://img.icons8.com/ios-filled/30/000000/reading.png";
 
     document.getElementById('line-1').innerHTML="Outdoor activities not recommended";
@@ -40,7 +45,6 @@ displays.forEach(display => {
   else
   {
     jackcolor.style.stroke="rgba(169, 240, 17, 1)";
-
 
     document.getElementById('icon-2').src="https://img.icons8.com/material-sharp/30/000000/partly-cloudy-day--v1.png";
 
