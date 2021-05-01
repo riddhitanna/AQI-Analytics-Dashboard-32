@@ -187,8 +187,11 @@ body{
 
 
 .display-container {
-  margin: auto;
+  margin-left: 44.5%;
+  margin-right: auto;
   display: flex;
+
+
 }
 
 .note-display {
@@ -239,9 +242,9 @@ body{
 .percent__dec { font-size: 12px; }
 
 .label {
-  font-family: 'Raleway', serif;
+	font-family: "Open Sans";
   font-size: 14px;
   text-transform: uppercase;
   margin-top: 15px;
-  color: green;
+  color: black;
 }
