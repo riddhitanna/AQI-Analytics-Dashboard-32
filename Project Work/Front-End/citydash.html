@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+<!-- message for backend team 
+First of all there is a div tag(id="aqi-city") which you need to manipulate so that it shows the correct AQI.
+and you also need to display the correct name of City(id="city-title")
+
+there is a stroke effect added in the circle which will display the AQI in an animated way and you need to modify the data-note attribute and the stroke effects will be done automatically besides once you set the data-note as the current AQI the health tips will also be updated.
+
+You need to change the values for the list of pollutants, humidity and temperature
+
+Also the graph should be plotted accordingly
+
+And do not forget to implement the search bar functionality
+ -->
 <html>
 <head>
 	<title>SEN Group 32</title>
@@ -46,7 +58,6 @@
       }
     </script>
  	
- 	
 </head>
 
 <body>
@@ -61,19 +72,19 @@
 	        <ul class="navbar-nav">
 
 	            <li class="nav-item active" id="home-btn">
-	                <a class="nav-link" href="#">Home</a>
+	                <a class="nav-link" href="#" target="top">Home</a>
 	            </li>
 	            <li class="nav-item dropdown" id="compare-btn">
-	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Compare </a>
+	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" target="top"> Compare </a>
 	                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	                    <a class="dropdown-item" href="#">City vs City</a>
+	                    <a class="dropdown-item" href="#" target="top">City vs City</a>
 	                    <div class="dropdown-divider"></div>
-	                    <a class="dropdown-item" href="#">State vs State</a>
+	                    <a class="dropdown-item" href="#" target="top">State vs State</a>
 	                    
 	                </div>
 	            </li>
 	            <li class="nav-item active" id="myloc-btn">
-	                <a class="nav-link" href="#">My Location</a>
+	                <a class="nav-link" href="#" target="top">My Location</a>
 	            </li>
 
 	        </ul>
@@ -88,14 +99,34 @@
           </div>
     </div>
 </nav>
-
-
 <div class="container" id="city-title">City</div>
 
 <div class="container" id="aqi-city"> 
 	AQI : 10
 </div>
+<br>\
 <br>
+
+
+  <ul class="display-container">
+   
+<!-- this attribute data-note is extremely important and it should be set as the AQI of city -->
+    <li class="note-display" data-note="300">
+      <div class="circle">
+        <svg width="84" height="84" class="circle__svg">
+          <circle id="jack-circle" cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
+          <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
+        </svg>
+
+        <div class="percent">
+          <span class="percent__int">0</span>
+        </div>
+      </div>
+
+      <span class="label" id="aqi-in-circle">AQI</span>
+    </li>
+  </ul>
+
 <br>
 <div class="container" id="pollutant-title-list"> 
 	<ul>
@@ -157,26 +188,6 @@
 
 
 
-
-
-  <ul class="display-container">
-   
-
-    <li class="note-display" data-note="155">
-      <div class="circle">
-        <svg width="84" height="84" class="circle__svg">
-          <circle id="jack-circle" cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
-          <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
-        </svg>
-
-        <div class="percent">
-          <span class="percent__int">0</span>
-        </div>
-      </div>
-
-      <span class="label">AQI</span>
-    </li>
-  </ul>
 
 
 
