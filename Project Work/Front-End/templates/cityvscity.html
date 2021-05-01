@@ -1,6 +1,9 @@
-
 <!DOCTYPE html>
-
+<!-- message for backend team 
+	Search bar functionality is required here as well
+	and AQI of the two regions should be displayed accordingly once user enters two valid regions and attempts to compare those
+	Also the graph should be plotted accordingly
+ -->
 <html>
 <head>
 	<title>SEN Group 32</title>
@@ -16,7 +19,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	
 	<script src="https://kit.fontawesome.com/3c90917715.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="../static/cityvscity.css">
+	<link rel="stylesheet" type="text/css" href="cityvscity.css">
 
 
 	
@@ -59,19 +62,19 @@
 	        <ul class="navbar-nav">
 
 	            <li class="nav-item active" id="home-btn">
-	                <a class="nav-link" href="/main">Home</a>
+	                <a class="nav-link" href="#" target="top">Home</a>
 	            </li>
 	            <li class="nav-item dropdown" id="compare-btn">
-	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <b>Compare </b></a>
+	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" target="top"> <b>Compare</b> </a>
 	                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	                    <a class="dropdown-item" href="/cvc"><b>City vs City</b></a>
+	                    <a class="dropdown-item" href="#" target="top"><b>City vs City</b></a>
 	                    <div class="dropdown-divider"></div>
-	                    <a class="dropdown-item" href="/svs">State vs State</a>
+	                    <a class="dropdown-item" href="#" target="top">State vs State</a>
 	                    
 	                </div>
 	            </li>
 	            <li class="nav-item active" id="myloc-btn">
-	                <a class="nav-link" href="#">My Location</a>
+	                <a class="nav-link" href="#" target="top">My Location</a>
 	            </li>
 
 	        </ul>
@@ -86,7 +89,6 @@
           </div>
     </div>
 </nav>
-
 <form>
 	<div class="container">
 	  	<div class="form-row">

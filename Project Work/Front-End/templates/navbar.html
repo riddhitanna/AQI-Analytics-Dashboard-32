@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-
-
 <!-- message for backend team 
-	Search bar functionality is required here as well
-	and AQI of the two regions should be displayed accordingly once user enters two valid regions and attempts to compare those
-	Also the graph should be plotted accordingly
+	This is the code for the navigation bar which will be used by all the frontend developers and using this the user would be able to navigate through different section of the website.
+	There is a search bar provided in the navigation bar and you need to make sure that as user enters a valid city/state; he/she should be redirected to city/state dashboard.
  -->
 <html>
 <head>
@@ -21,39 +18,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	
 	<script src="https://kit.fontawesome.com/3c90917715.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="cityvscity.css">
-
-
-	
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'State1', 'State2'],
-          ['2004',  40,      50],
-          ['2005',  50,      60],
-          ['2006',  60,      90],
-          ['2007',  70,      100]
-        ]);
-
-        var options = {
-          title: 'AQI comparision',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-        chart.draw(data, options);
-      }
-    </script>
+	<link rel="stylesheet" type="text/css" href="navbar.css">
 </head>
 
 <body>
-<!--Contributor-Jack-2001-->
+	<!--Contributor-Jack-2001-->
 	<nav class="navbar navbar-expand-sm navbar-custom">
     <p id="aqi-nav-title">AQI
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
@@ -67,11 +36,11 @@
 	                <a class="nav-link" href="#" target="top">Home</a>
 	            </li>
 	            <li class="nav-item dropdown" id="compare-btn">
-	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" target="top"> <b>Compare </b></a>
+	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" target="top"> Compare </a>
 	                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	                    <a class="dropdown-item" href="#" target="top">City vs City</a>
 	                    <div class="dropdown-divider"></div>
-	                    <a class="dropdown-item" href="#" target="top"><b>State vs State</b></a>
+	                    <a class="dropdown-item" href="#" target="top">State vs State</a>
 	                    
 	                </div>
 	            </li>
@@ -91,36 +60,5 @@
           </div>
     </div>
 </nav>
-<form>
-	<div class="container">
-	  	<div class="form-row">
-	    	<div class="col-4">
-	      		<input type="text" class="form-control" placeholder="State">
-	    	</div>
-	   		<p>versus</p>
-	    	<div class="col-4">
-	      		<input type="text" class="form-control" placeholder="State">
-	    	</div>
-	    	<div>
-	    		<button class="btn btn-primary" type="submit">Compare</button>
-	    	</div>
-		</div>
-	</div>
-</form>
-<br>
-<br>
-<div class="container" id="error-message"> Error: you have not entered a valid state.</div>
-
-<div class="container"> 
-	<ul class="list-unstyled">
-	  <li class="aqi-li">AQI : -1</li>
-	  <li class="aqi-li">AQI : -1</li>
-	  
-	</ul>
-</div>
-<br>
-<br>
-
-<div class="container"> <div id="curve_chart" style="width: 50%; height: 346px;"></div></div>
 </body>
 </html>
