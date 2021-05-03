@@ -66,6 +66,8 @@ body{
     text-align: center;
     font-size: xx-large;
     margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #state-select{
@@ -74,7 +76,7 @@ body{
 
 #state-img{
     margin-top: 10px;
-    align-items: center;
+    margin-right: 4%;
 }
 
 #state_table table{
@@ -95,11 +97,14 @@ body{
 }
 
 #district-table{
-    margin-left: auto;
+    width: 40%;
+    margin-left: 27%;
     margin-right: auto;
     margin-top: 5%;
     margin-bottom: 5%;
 }
+
+
 #common img{
     width: 80%;
     margin-left: auto;
@@ -109,7 +114,7 @@ body{
 }
 
 #dt {
-    width: 100%;
+    width: 110%;
     display:block;
 }
 #dt thead {
@@ -120,7 +125,7 @@ body{
 #dt tbody {
     height: 80%;
     display: block;
-    width: 110%;
+    width: 115%;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -130,11 +135,16 @@ th,td{
     text-align: center;
 }
 
-#plots #bargraph,#bargraph-2,#bargraph-3,#bargraph-4{
+#district-table td{
+    padding: 22px;
+}
+
+
+/* #plots #bargraph,#bargraph-2,#bargraph-3,#bargraph-4{
     width : 75%;
     margin-left: auto;
     margin-right: auto;
-}
+} */
 
 
 
