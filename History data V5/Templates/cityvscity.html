@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<!-- message for backend team 
+	Search bar functionality is required here as well
+	and AQI of the two regions should be displayed accordingly once user enters two valid regions and attempts to compare those
+	Also the graph should be plotted accordingly
+ -->
+<html>
+<head>
+	<title>SEN Group 32</title>
+	
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+	<script src="https://kit.fontawesome.com/3c90917715.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/cityvscity.css')}}">
+
+	<!-- For chart.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+	  
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+</head>
+
+<body onload="Javascript:updateChart()">
+	<!--Contributor-Jack-2001-->
+	<nav class="navbar navbar-expand-sm navbar-custom">
+    <p id="aqi-nav-title">AQI
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
+        <img style="padding-left: 60px;padding-bottom: 15px;" src="https://img.icons8.com/android/30/000000/menu.png"/>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarCustom">
+        <div class="conatiner" id="btns">
+	        <ul class="navbar-nav">
+
+	            <li class="nav-item active" id="home-btn">
+	                <a class="nav-link" href="/maindashboard" target="top">Home</a>
+	            </li>
+	            <li class="nav-item dropdown" id="compare-btn">
+	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" target="top"> <b>Compare</b> </a>
+	                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	                    <a class="dropdown-item" href="#" target="top"><b>City vs City</b></a>
+	                    <div class="dropdown-divider"></div>
+	                    <a class="dropdown-item" href="/statevsstate" target="top">State vs State</a>
+	                    
+	                </div>
+	            </li>
+	            <li class="nav-item active" id="myloc-btn">
+	                <a class="nav-link" href="/citydash" target="top">My Location</a>
+	            </li>
+
+	        </ul>
+	        </div>
+          <div id="search-bar">
+          	
+		 <form method="POST" class="form-inline" onsubmit="checkinp()" action="" id="form-search">
+    		<input class="form-control mr-sm-2" type="search" name="name" placeholder="Search" aria-label="Search">
+    		<button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
+  		</form>
+
+          </div>
+    </div>
+</nav>
+<form method="POST">
+	<div class="container">
+	  	<div class="form-row">
+	    	<div class="col-4">
+	      		<input type="text" class="form-control" name="city1" placeholder="City1">
+	    	</div>
+	   		<p>versus</p>
+	    	<div class="col-4">
+	      		<input type="text" class="form-control" name="city2" placeholder="City2">
+	    	</div>
+	    	<div>
+	    		<button class="btn btn-primary" type="submit">Compare</button>
+	    	</div>
+		</div>
+	</div>
+</form>
+<br>
+<br>
+{% if (len1 != 0 and len2 != 0) %}
+	{% if (len1 == 2 or len2 == 2) %}
+		<div>
+		{% if (len1 == 2) %}
+			<div class="container" style="z-index: 10; color: red; text-align: center;"> {{data1[1]}}</div>
+		{% else %}}
+			<div class="container" style="z-index: 10; color: red; text-align: center;"> {{data2[1]}}</div>
+		{% endif %}
+	</div>
+	{% endif %}
+	<br>
+	<br>
+
+	{% if (len1 != 2 and len2 != 2) %}
+	<div class="container"> 
+		<ul class="list-unstyled">
+		  <li class="aqi-li">AQI : -1</li>
+		  <li class="aqi-li">AQI : -1</li>
+		  
+		</ul>
+	</div>
+	<br>
+	<br>
+
+	<div>
+	  <select class="form-control float-right " id="changePollutant" onchange="updateChart();" name="changePollutant" style="width:150px; height:40px; position: relative; left: -50px">
+	  	  <option value="aqi">aqi</option>
+	      <option value="co">co</option>
+	      <option value="no">no</option>
+	      <option value="no2">no2</option>
+	      <option value="o3">o3</option>
+	      <option value="so2">so2</option>
+	      <option value="pm2_5">pm2.5</option>
+	      <option value="pm10">pm10</option>
+	      <option value="nh3">nh3</option>
+	  </select>
+	</div>
+
+	<div>
+		<canvas id="line-chart" width="900" height="450" style="z-index: 10"></canvas>
+	</div>
+
+	<script>
+	  var city1Data = {
+	  'aqi': {
+	      data: [
+	        {% for item in data1[0] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data1[9]}}:AQI",
+	      borderColor: "blue",
+	      fill: false
+	    },
+	  'co': {
+	      data: [
+	        {% for item in data1[1] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data1[9]}}:CO (ug/m^3)",
+	      borderColor: "blue",
+	      fill: false
+	    },
+	  'no': {
+	      data: [
+	        {% for item in data1[2] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data1[9]}}:NO (ug/m^3)",
+	      borderColor: "blue",
+	      fill: false
+	    },
+	  'no2': {
+	      data: [
+	        {% for item in data1[3] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data1[9]}}:NO2 (ug/m^3)",
+	      borderColor: "blue",
+	      fill: false
+	    },
+	  'o3': {
+	      data: [
+	        {% for item in data1[4] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data1[9]}}:O3 (ug/m^3)",
+	      borderColor: "blue",
+	      fill: false
+	    },
+	  'so2': {
+	      data: [
+	        {% for item in data1[5] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data1[9]}}:SO2 (ug/m^3)",
+	      borderColor: "blue",
+	      fill: false
+	    },
+	  'pm2_5': {
+	      data: [
+	        {% for item in data1[6] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data1[9]}}:PM2.5 (ug/m^3)",
+	      borderColor: "blue",
+	      fill: false
+	    },
+	  'pm10': {
+	      data: [
+	        {% for item in data1[7] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data1[9]}}:PM10 (ug/m^3)",
+	      borderColor: "blue",
+	      fill: false
+	    },
+	  'nh3': {
+	      data: [
+	        {% for item in data1[8] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data1[9]}}:NH3 (ug/m^3)",
+	      borderColor: "blue",
+	      fill: false
+	    }
+	  }
+
+	  var city2Data = {
+	  'aqi': {
+	      data: [
+	        {% for item in data2[0] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data2[9]}}:AQI",
+	      borderColor: "red",
+	      fill: false
+	    },
+	  'co': {
+	      data: [
+	        {% for item in data2[1] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data2[9]}}:CO (ug/m^3)",
+	      borderColor: "red",
+	      fill: false
+	    },
+	  'no': {
+	      data: [
+	        {% for item in data2[2] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data2[9]}}:NO (ug/m^3)",
+	      borderColor: "red",
+	      fill: false
+	    },
+	  'no2': {
+	      data: [
+	        {% for item in data2[3] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data2[9]}}:NO2 (ug/m^3)",
+	      borderColor: "red",
+	      fill: false
+	    },
+	  'o3': {
+	      data: [
+	        {% for item in data2[4] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data2[9]}}:O3 (ug/m^3)",
+	      borderColor: "red",
+	      fill: false
+	    },
+	  'so2': {
+	      data: [
+	        {% for item in data2[5] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data2[9]}}:SO2 (ug/m^3)",
+	      borderColor: "red",
+	      fill: false
+	    },
+	  'pm2_5': {
+	      data: [
+	        {% for item in data2[6] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data2[9]}}:PM2.5 (ug/m^3)",
+	      borderColor: "red",
+	      fill: false
+	    },
+	  'pm10': {
+	      data: [
+	        {% for item in data2[7] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data2[9]}}:PM10 (ug/m^3)",
+	      borderColor: "red",
+	      fill: false
+	    },
+	  'nh3': {
+	      data: [
+	        {% for item in data2[8] %}
+	          '{{ item[1] }}',
+	        {% endfor %}
+	      ],
+	      label: "{{data2[9]}}:NH3 (ug/m^3)",
+	      borderColor: "red",
+	      fill: false
+	    }
+	  }
+
+	  // Variable for Chart created Globally
+	  var myLineChart;
+
+	  function updateChart() {
+	  var ctx = document.getElementById("line-chart");
+	  var e = document.getElementById("changePollutant");
+	  // Get the selected value of dropdown here
+	  var dd = e.options[e.selectedIndex].value;
+	  // Create dataset
+	  var pollutantData = {
+	      labels: [ 
+	      {% for item in data1[0] %}
+	        '{{ item[0] }}',
+	      {% endfor %}
+	      ],
+	      datasets: [city1Data[dd],city2Data[dd]]
+	  }
+	  // Clear you chart before assiging new dataset
+	  if (myLineChart != undefined) {
+	      myLineChart.clear();
+	      myLineChart.destroy();
+	  }
+
+	  myLineChart = new Chart(ctx, {
+	      type: "line",
+	      data: {
+	          labels: pollutantData.labels, //set labels
+	          datasets: pollutantData.datasets // set data for selected year
+	      },
+	      options: {
+	        responsive: false,
+	        title: {
+	            display: true,
+	            text: "Comparison between two cities"
+	        },
+            scales: {
+              yAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Values",
+                  },
+                },
+              ],
+              xAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Date",
+                  },
+                },
+              ],
+            }
+	      }
+	    }
+	  );
+	  // once you set new data, need to update the chart.
+	  myLineChart.update();
+	}
+	</script>
+	{% endif %}
+
+	<br>
+	<br>
+	<br>
+	<br>
+{% endif %}
+
+</body>
+</html>
