@@ -1,0 +1,380 @@
+<html>
+    <head>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script src="https://kit.fontawesome.com/3c90917715.js" crossorigin="anonymous"></script>
+
+        <title>
+            State
+        </title>
+        <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='CSS/statedashboard.css')}}">
+
+    <!-- For chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+    </head>
+    <body onload="Javascript:updateChart()">
+
+    <nav class="navbar navbar-expand-sm navbar-custom">
+        <p id="aqi-nav-title">AQI
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
+            <img style="padding-left: 60px;padding-bottom: 15px;" src="https://img.icons8.com/android/30/000000/menu.png"/>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarCustom">
+            <div class="conatiner" id="btns">
+                <ul class="navbar-nav">
+    
+                    <li class="nav-item active" id="home-btn">
+                        <a class="nav-link" href="/maindashboard" target="top">Home</a>
+                    </li>
+                    <li class="nav-item dropdown" id="compare-btn">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" target="top"> Compare </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/cityvscity" target="top">City vs City</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/statevsstate" target="top">State vs State</a>
+                            
+                        </div>
+                    </li>
+                    <li class="nav-item active" id="myloc-btn">
+                        <a class="nav-link" href="/citydash" target="top">My Location</a>
+                    </li>
+    
+                </ul>
+                </div>
+              <div id="search-bar">
+                  
+             <form method="POST" class="form-inline" onsubmit="checkinp()" action="" id="form-search">
+                <input class="form-control mr-sm-2" type="search" name="name" placeholder="Search" aria-label="Search">
+                <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
+              </form>
+    
+              </div>
+        </div>
+    </nav>
+
+        <!-- <div id="state-select">
+            <label for="states">Select a state:</label>
+            <select name="states" id="states" type="text">
+                <option disabled selected value>select</option>
+            </select>
+        </div> -->
+
+        <div id="state_info">
+            <label for="State Name">{{historyData[9]}}</label><br>
+            <!-- <label for="State AQI">State AQI index</label> -->
+        </div>
+        <div id="state-img">
+            <ul class="display-container">
+
+                <!-- this attribute data-note is extremely important and it should be set as the AQI of city -->
+                    <li class="note-display" data-note="300">
+                      <div class="circle">
+                        <svg width="84" height="84" class="circle__svg">
+                          <circle id="jack-circle" cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
+                          <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
+                        </svg>
+                
+                        <div class="percent">
+                          <span class="percent__int">150</span>
+                        </div>
+                      </div>
+                
+                      <span class="label" id="aqi-in-circle">AQI</span>
+                    </li>
+                  </ul>
+        </div>
+        <br><br>
+
+        <div id="state_table">
+            <table>
+                <tr>
+                    <td><b> PM2.5 </b></td>
+                    <td><b> PM10 </b></td>
+                    <td><b> Humidity </b></td>
+                    <td><b> Temprature </b></td>
+                </tr>
+                <tr>
+                    <td>{{aqiData['pm2_5']}}</td>
+                    <td>{{aqiData['pm10']}}</td>
+                    <td>{{weatherData['humidity']}}</td>
+                    <td>{{weatherData['temp']}}</td>
+                </tr>
+            </table>
+        </div>
+        <div id="common">
+            <div id="district-table">
+                <table id="dt">
+                    <tr>
+                        <td>CITIES</td>
+                        <td>STATUS</td>
+                        <td>AQI</td>
+                        <td>PM2.5</td>
+                        <td>PM10</td>
+                    </tr>
+                    <!-- Add district in for loop here-->
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>C1</td>
+                        <td>Healthy</td>
+                        <td>12</td>
+                        <td>12.5</td>
+                        <td>12</td>
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
+
+        <div>
+          <select class="form-control float-right " id="changePollutant" onchange="updateChart();" name="changePollutant" style="width:150px; height:40px; position: relative; left: -50px">
+              <option value="aqi">aqi</option>
+              <option value="co">co</option>
+              <option value="no">no</option>
+              <option value="no2">no2</option>
+              <option value="o3">o3</option>
+              <option value="so2">so2</option>
+              <option value="pm2_5">pm2.5</option>
+              <option value="pm10">pm10</option>
+              <option value="nh3">nh3</option>
+          </select>
+        </div>
+
+        <div>
+            <canvas id="line-chart" width="900" height="450" style="z-index: 10"></canvas>
+        </div>
+
+        <script>
+          var stateData = {
+          'aqi': {
+              data: [
+                {% for item in historyData[0] %}
+                  '{{ item[1] }}',
+                {% endfor %}
+              ],
+              label: "{{historyData[9]}}:AQI",
+              borderColor: "blue",
+              fill: false
+            },
+          'co': {
+              data: [
+                {% for item in historyData[1] %}
+                  '{{ item[1] }}',
+                {% endfor %}
+              ],
+              label: "{{historyData[9]}}:CO (ug/m^3)",
+              borderColor: "blue",
+              fill: false
+            },
+          'no': {
+              data: [
+                {% for item in historyData[2] %}
+                  '{{ item[1] }}',
+                {% endfor %}
+              ],
+              label: "{{historyData[9]}}:NO (ug/m^3)",
+              borderColor: "blue",
+              fill: false
+            },
+          'no2': {
+              data: [
+                {% for item in historyData[3] %}
+                  '{{ item[1] }}',
+                {% endfor %}
+              ],
+              label: "{{historyData[9]}}:NO2 (ug/m^3)",
+              borderColor: "blue",
+              fill: false
+            },
+          'o3': {
+              data: [
+                {% for item in historyData[4] %}
+                  '{{ item[1] }}',
+                {% endfor %}
+              ],
+              label: "{{historyData[9]}}:O3 (ug/m^3)",
+              borderColor: "blue",
+              fill: false
+            },
+          'so2': {
+              data: [
+                {% for item in historyData[5] %}
+                  '{{ item[1] }}',
+                {% endfor %}
+              ],
+              label: "{{historyData[9]}}:SO2 (ug/m^3)",
+              borderColor: "blue",
+              fill: false
+            },
+          'pm2_5': {
+              data: [
+                {% for item in historyData[6] %}
+                  '{{ item[1] }}',
+                {% endfor %}
+              ],
+              label: "{{historyData[9]}}:PM2.5 (ug/m^3)",
+              borderColor: "blue",
+              fill: false
+            },
+          'pm10': {
+              data: [
+                {% for item in historyData[7] %}
+                  '{{ item[1] }}',
+                {% endfor %}
+              ],
+              label: "{{historyData[9]}}:PM10 (ug/m^3)",
+              borderColor: "blue",
+              fill: false
+            },
+          'nh3': {
+              data: [
+                {% for item in historyData[8] %}
+                  '{{ item[1] }}',
+                {% endfor %}
+              ],
+              label: "{{historyData[9]}}:NH3",
+              borderColor: "blue",
+              fill: false
+            }
+          }
+
+          // Variable for Chart created Globally
+          var myLineChart;
+
+          function updateChart() {
+          var ctx = document.getElementById("line-chart");
+          var e = document.getElementById("changePollutant");
+          // Get the selected value of dropdown here
+          var dd = e.options[e.selectedIndex].value;
+          // Create dataset
+          var pollutantData = {
+              labels: [ 
+              {% for item in historyData[0] %}
+                '{{ item[0] }}',
+              {% endfor %}
+              ],
+              datasets: [stateData[dd]]
+          }
+          // Clear you chart before assiging new dataset
+          if (myLineChart != undefined) {
+              myLineChart.clear();
+              myLineChart.destroy();
+          }
+
+          myLineChart = new Chart(ctx, {
+              type: "line",
+              data: {
+                  labels: pollutantData.labels, //set labels
+                  datasets: pollutantData.datasets // set data for selected year
+              },
+              options: {
+                responsive: false,
+                title: {
+                    display: true,
+                    text: "{{historyData[9]}}"+" History Data"
+                },
+                scales: {
+                  yAxes: [
+                    {
+                      scaleLabel: {
+                        display: true,
+                        labelString: "Values",
+                      },
+                    },
+                  ],
+                  xAxes: [
+                    {
+                      scaleLabel: {
+                        display: true,
+                        labelString: "Date",
+                      },
+                    },
+                  ],
+                }
+              }
+            }
+          );
+          // once you set new data, need to update the chart.
+          myLineChart.update();
+        }
+        </script>
+
+        <script src="{{ url_for('static', filename='Javascript/statedashboard.js')}}"></script>
+    </body>
+
+</html>

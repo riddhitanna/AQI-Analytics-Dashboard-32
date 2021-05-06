@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+body{
+	background-color: #E9F4F6;
+	font-family: "Open Sans";
+	
+}
+.navbar-custom {
+    background-color: rgba(202, 202, 202, 0.58);
+}
+
+#search-bar{
+	float: right;
+}
+
+.nav-link{
+	font-size: 20px;
+}
+
+
+#btns{
+	 margin-left: 10%;
+  	width: 50%;
+}
+#home-btn{
+	padding-right: 15px;
+}
+#compare-btn{
+	color: #000000;
+	padding-right: 15px;
+}
+#navbarDropdown{
+	color: black;
+}
+.navbar-custom .nav-item.active .nav-link{
+	color: #000000;
+}
+.navbar-custom .nav-item:hover .nav-link {
+    
+	text-decoration: underline;
+}
+
+#compare-btn:hover {
+	text-decoration: underline;
+}
+
+.navbar-custom .dropdown-item {
+    color: #000000;
+}
+
+.navbar-custom .dropdown-item:hover,
+.navbar-custom .dropdown-item:focus {
+    
+	text-decoration: underline;
+}
+#aqi-nav-title{
+	font-family: "Open Sans";
+font-style: normal;
+font-weight: normal;
+font-size: 35px;
+line-height: 48px;
+
+}
+
+#error-message{
+	color: red;
+	text-align: center;
+}
+.form-row{
+	padding-left: 15%
+}
+	
+.aqi-li{
+	float: left;
+	width: 12%;
+	margin-left: 25%;
+	font-family: "Open Sans";
+	font-style: normal;
+	font-weight: normal;
+
+	text-align: center;
+	font-size: calc(15% + 1vw + 1vh);
+
+	line-height: 100%;
+	background-color: rgba(252, 229, 20, 0.75);
+
+	border-radius: 11px;
+}
