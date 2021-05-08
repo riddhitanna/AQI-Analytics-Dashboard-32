@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 body{
-    background-color: #E9F4F6;
-    font-family: "Open Sans";
-    
+	background-color: #E9F4F6;
+	font-family: "Open Sans";
+	
 }
 .navbar-custom {
     background-color: rgba(202, 202, 202, 0.58);
@@ -10,38 +10,38 @@ body{
 }
 
 #search-bar{
-    float: right;
+	float: right;
 }
 
 
 .nav-link{
-    font-size: 20px;
+	font-size: 20px;
 }
 
 #btns{
-     margin-left: 10%;
-    width: 50%;
+	 margin-left: 10%;
+  	width: 50%;
 }
 #home-btn{
-    padding-right: 15px;
+	padding-right: 15px;
 }
 #compare-btn{
-    color: #000000;
-    padding-right: 15px;
+	color: #000000;
+	padding-right: 15px;
 }
 #navbarDropdown{
-    color: black;
+	color: black;
 }
 .navbar-custom .nav-item.active .nav-link{
-    color: #000000;
+	color: #000000;
 }
 .navbar-custom .nav-item:hover .nav-link {
     
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 #compare-btn:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 .navbar-custom .dropdown-item {
@@ -51,14 +51,14 @@ body{
 .navbar-custom .dropdown-item:hover,
 .navbar-custom .dropdown-item:focus {
     
-    text-decoration: underline;
+	text-decoration: underline;
 }
 #aqi-nav-title{
-    font-family: "Open Sans";
-    font-style: normal;
-    font-weight: normal;
-    font-size: 35px;
-    line-height: 48px;
+	font-family: "Open Sans";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	line-height: 48px;
 
 }
 
@@ -133,7 +133,7 @@ body{
 #dt tbody {
     height: 80%;
     display: block;
-    width: 95%;
+    width: 103%;
     overflow-y: auto;
     overflow-x: auto;
 }
@@ -158,8 +158,8 @@ th,td{
 }
 #st tbody {
     display: block;
-    width: 95%;
-    overflow-y: auto;
+    width: 100%;
+    overflow-y: hidden;
     overflow-x: auto;
 }
 
