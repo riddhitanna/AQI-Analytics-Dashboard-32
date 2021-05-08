@@ -33,7 +33,7 @@
     {% endif %}
 
     <nav class="navbar navbar-expand-sm navbar-custom">
-        <p id="aqi-nav-title">AQI
+        <p id="aqi-nav-title"><a href="">AQI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
             <img style="padding-left: 60px;padding-bottom: 15px;" src="https://img.icons8.com/android/30/000000/menu.png"/>
         </button>
@@ -109,10 +109,10 @@
         <div id="state_table">
             <table>
                 <tr>
-                    <td><b> PM2.5 (ug/m^3)</b></td>
-                    <td><b> PM10 (ug/m^3)</b></td>
-                    <td><b> Humidity (%)</b></td>
-                    <td><b> Temperature (C)</b></td>
+                    <td style="font-size:smaller;"><b style="font-size: x-large;"> PM2.5 </b>$${(\mu g / m^{3})}$$</td>
+                    <td style="font-size:smaller;"><b style="font-size: x-large;"> PM10 </b>$${(\mu g / m^{3})}$$</td>
+                    <td style="font-size: smaller;"><b style="font-size: x-large;"> Humidity</b>$${(\%)}$$</td>
+                    <td style="font-size: smaller;"><b style="font-size: x-large;"> Temperature</b>$${(^{\circ}C)}$$</td>
                 </tr>
                 <tr>
                     <td>{{aqiData['pm2_5']}}</td>
@@ -127,16 +127,16 @@
                 <table id="dt">
                     <tr>
                         <td><b>CITIES</b></td>
-                        <td><b>STATUS</b></td>
-                        <td><b>AQI</b></td>
-                        <td><b>PM2.5 (ug/m^3)</b></td>
-                        <td><b>PM10 (ug/m^3)</b></td>
-                        <td><b>CO (ppm)</b></td>
-                        <td><b>SO2 (ppb)</b></td>
+                        <td><b style="font-size:large;">STATUS</b></td>
+                        <td><b style="font-size:large;">AQI</b></td>
+                        <td style="font-size:smaller;"><b style="font-size:large;"> PM2.5 </b>$${(\mu g / m^{3})}$$</td>
+                        <td style="font-size:smaller;"><b style="font-size:large;"> PM10 </b>$${(\mu g / m^{3})}$$</td>
+                        <td style="font-size: smaller;"><b style="font-size: large;">CO</b>$$(ppm)$$</td>
+                        <td style="font-size: smaller;"><b style="font-size: large;">$$ {SO_{2}} $$</b>$$(ppb)$$</td>
                     </tr>
                     <!-- Add district in for loop here-->
                     <tr>
-                        <td>{{cityData[0][0]['city_name']}}</td>
+                        <td><a href="">{{cityData[0][0]['city_name']}}</a></td>
                         <td>{{cityData[0][0]['status']}}</td>
                         <td>{{cityData[0][0]['cur_aqi']}}</td>
                         <td>{{cityData[0][0]['PM25']}}</td>
@@ -145,7 +145,7 @@
                         <td>{{cityData[0][0]['SO2']}}</td>
                     </tr>
                     <tr>
-                        <td>{{cityData[1][0]['city_name']}}</td>
+                        <td><a href="">{{cityData[1][0]['city_name']}}</a></td>
                         <td>{{cityData[1][0]['status']}}</td>
                         <td>{{cityData[1][0]['cur_aqi']}}</td>
                         <td>{{cityData[1][0]['PM25']}}</td>
@@ -154,7 +154,7 @@
                         <td>{{cityData[1][0]['SO2']}}</td>
                     </tr>
                     <tr>
-                        <td>{{cityData[2][0]['city_name']}}</td>
+                        <td><a href="">{{cityData[2][0]['city_name']}}</a></td>
                         <td>{{cityData[2][0]['status']}}</td>
                         <td>{{cityData[2][0]['cur_aqi']}}</td>
                         <td>{{cityData[2][0]['PM25']}}</td>
@@ -163,7 +163,7 @@
                         <td>{{cityData[2][0]['SO2']}}</td>
                     </tr>
                     <tr>
-                        <td>{{cityData[3][0]['city_name']}}</td>
+                        <td><a href="">{{cityData[3][0]['city_name']}}</a></td>
                         <td>{{cityData[3][0]['status']}}</td>
                         <td>{{cityData[3][0]['cur_aqi']}}</td>
                         <td>{{cityData[3][0]['PM25']}}</td>
@@ -172,7 +172,7 @@
                         <td>{{cityData[3][0]['SO2']}}</td>
                     </tr>
                     <tr>
-                        <td>{{cityData[4][0]['city_name']}}</td>
+                        <td><a href="">{{cityData[4][0]['city_name']}}</a></td>
                         <td>{{cityData[4][0]['status']}}</td>
                         <td>{{cityData[4][0]['cur_aqi']}}</td>
                         <td>{{cityData[4][0]['PM25']}}</td>
