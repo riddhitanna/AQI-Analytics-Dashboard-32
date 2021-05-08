@@ -15,14 +15,22 @@ cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 api = '72c8a65a1e2fac6803774513f214fb14'
 
 x_api_key = [	
+				'cB9TfstIzd7yJlDhFFvjP8EvQWsuBFFd2Ekrzmq5',
+				'ptv0WJwUNOPBhPxAlGl7a4fvyAxmYe62QUj4M6Q7',
+				'EGmO1w29PBamZ5VtAkLP3Wt6iAWT78gheBEkKo60',
+				'Bs56Ww4Y1C7kw8eDKisiL7TnuKmRC0EN2yS1K6gr',
+				'hEDmpi2OCY59u9XfarSoa98HPJ7GpuTg8j2akwuR',
+				'VA0lFrQf4H5vJHPU34Nrh3b9VidkjS1a1eJX2Kqp',
+				'kk8G27KZG05bP5scbhrX55mVQZalaxnK49fOjSC8',
 				'y7lqVkwOnq2l09waZuwK48liHGGXtFEu2ewJoOoI',
 				'4U85SanTcS7UzUpc6qSNm1grIF21KYfH53J1APie',
 				'LYPTDz5sDE52WTH8pOanYaAVCNuk2G3S631o4Lwa',
 				'p8hbJLVHBU38Fm3BLUHwm2TXmqUMOvAK7MOK325F',
 				'um2IaiAQXu0qUMA9urNy4vtJBSP9CNg5o9Hax7Ue',
 				'OP2zHpekf92lMtj0pTuSo5ScTW1j0jLQ3Cq0QAyl',
-				'mUziPUNk4G4BEEtA10f4083HFUlaNukg92TBzkhk'
-			]
+				'mUziPUNk4G4BEEtA10f4083HFUlaNukg92TBzkhk',
+				'6bTTZO8ynjaI3OUAM5PaB8M713tDr4tiaEMTvI2T'
+	   ]
 
 states_list=["Andhra+Pradesh","Arunachal+Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal+Pradesh",
 "Jharkhand","Karnataka","Kerala","Madhya+Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab",
@@ -64,8 +72,41 @@ common_list=dict({
 				"Andaman+and+Nicobar+Islands" : {'Port Blair','Diglipur','Prothrapur','Bakultala','Garacharma'}, 
 				"Delhi" : {'New Delhi','North Delhi','South Delhi','East Delhi','West Delhi'},
 				"Jammu+and+Kashmir" : {'Jammu','Ladakh','Srinagar','Leh','Patnitop'}, 
-				"Lakshadweep" : {'Kavaratti','Minicoy','Andrott','Amini','Kalpeni'}
+				"Lakshadweep" : {'Kavaratti','Minicoy','Andrott','Amini','Kalpeni'},
+				"gujarat" : {"Ahmedabad","Rajkot","Surat","Baroda","Dwarka"},
+				"sikkim" :  {"Gangtok","Gezing","Mangan","Lachung","Namchi"},
+				"andhra+pradesh" : {"Vishakapatnam","Vijayawada","Guntur","Nellore","Kurnool"},
+				"arunachal+pradesh" :{"Itanagar","Tawang","Naharlagun","Tezu","Roing"},
+				"assam" : {"Dispur","Guwahati","Silchar","Tezpur","Dibrugarh"},
+				"bihar" : {"Patna","Gaya","Bhagalpur","Muzaffarpur","Purnia"},
+				"chhattisgarh" : {"Bhilai","Raipur","Korba","Bilaspur","Raigarh"},
+				"goa":{"Panaji","Margao","Mormugao","Mapusa","Sanguem"},
+				"haryana":{"Gurgaon","Faridabad","Rohtak","Hisar","Panipat"},
+				"himachal+pradesh":{"Shimla","Dharmashala","Mandi","Solan","Chamba"},
+				"jharkhand":{"Ranchi","Dhanbad","Jamshedpur","Deogarh","Hazaribagh"},
+				"karnataka":{"Bangalore","Mangalore","Mysore","Hubli","Belgaum"},
+				"kerala":{"Kochi","Thiruvanathapuram","Kozhikode","Thrissur","Kolam"},
+				"madhya+Pradesh":{"Indore","Gwalior","Bhopal","Jabalpur","Ujjain"},
+				"maharashtra":{"Mumbai","Nagpur","Pune","Thane","Aurangabad"},
+				"manipur":{"Imphal","Kakaching","Ukhrul","Moirang","Tamenglong"},
+				"meghalaya" : {'Cherrapunji','Shillong','Dawki','Mawlynnong','Laitumkhrah'}, 
+				"mizoram" : {'Aizawl','Lunglei','Lengpui','Bairabi','Ngopa'}, 
+				"nagaland" : {'Kohima','Ungma','Chumukedima','Mopongchuket','Wokha'}, 
+				"odisha" : {'Angul','Baripada','Jeypore','Bhubaneswar','Cuttack'}, 
+				"punjab" : {'Amritsar','Bathinda','Ludhiana','Chandigarh','Patiala'}, 
+				"rajasthan" : {'Ajmer','Bikaner','Jaipur','Jaisalmer','Jodhpur'}, 
+				"tamil+nadu" : {'Chennai','Coimbatore','Rameswaram','Kanyakumari','Ooty'}, 
+				"telangana" : {'Hyderabad','Warangal','Nalgonda','Adilabad','Basara'}, 
+				"tripura" : {'Agartala','Amarpur','Melaghar','Kailashahar','Belonia'}, 
+				"uttar+pradesh" : {'Agra','Kanpur','Ayodhya','Meerut','Lucknow'}, 
+				"uttarakhand" : {'Badrinath','Dehradun','Rishikesh','Haridwar','Kedarnath'}, 
+				"west+bengal" : {'Darjeeling','Kolkata','Siliguri','Howrah','Jalpaiguri'}, 
+				"andaman+and+nicobar+islands" : {'Port Blair','Diglipur','Prothrapur','Bakultala','Garacharma'}, 
+				"delhi" : {'New Delhi','North Delhi','South Delhi','East Delhi','West Delhi'},
+				"jammu+and+kashmir" : {'Jammu','Ladakh','Srinagar','Leh','Patnitop'}, 
+				"lakshadweep" : {'Kavaratti','Minicoy','Andrott','Amini','Kalpeni'}
 				 })
+
 metro_list = ["Mumbai","Bangalore","Kolkata","Chennai","New Delhi"]
 
 
@@ -407,10 +448,10 @@ def citydash(name=""):
 		#Removing extra whitespaces and converting spaces into + to pass into url.
 		name = "+".join(name.split())
 		if len(name) == 0:
-			pollutantsData = ['Error','Please enter a place in searchbox to search for air pollution details of required place.']
+			historyData = ['Error','Please enter a place in searchbox to search for air pollution details of required place.']
 			city_data = []
 			weatherData = ['Error']
-			return render_template('citydash.html', citydata = city_data, pollutantsData= pollutantsData, len = len(pollutantsData))
+			return render_template('citydash.html', citydata = city_data, historyData= historyData, len = len(historyData))
 		else:
 			if name in states_list:
 				return redirect(url_for('statedashboard', name = name))
@@ -498,15 +539,19 @@ def cityvscity():
 	city2Thread.join()
 	
 	if len(latLonData1[0]) == 0:
+		city_data=[]
 		pollutantsData1 = ['Error','Sorry! The Data for '+city1+' is not available.']
 		pollutantsData2 = ['Error']
 	elif city1 in states_list:
+		city_data=[]
 		pollutantsData1 = ['Error','Sorry! This page only shows city related data. Please enter a city name.']
 		pollutantsData2 = ['Error']
 	elif len(latLonData2[0]) == 0:
+		city_data=[]
 		pollutantsData1 = ['Error']
 		pollutantsData2 = ['Error','Sorry! The data for '+city2+' is not available.']
 	elif city2 in states_list:
+		city_data=[]
 		pollutantsData1 = ['Error']
 		pollutantsData2 = ['Error','Sorry! This page only shows city related data. Please enter a city name.']
 	else:
