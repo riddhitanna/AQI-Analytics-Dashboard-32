@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!-- message for backend team 
+First of all there is a div tag(id="aqi-city") which you need to manipulate so that it shows the correct AQI.
+and you also need to display the correct name of City(id="city-title")
+there is a stroke effect added in the circle which will display the AQI in an animated way and you need to modify the data-note attribute and the stroke effects will be done automatically besides once you set the data-note as the current AQI the health tips will also be updated.
+You need to change the values for the list of pollutants, humidity and temperature
+Also the graph should be plotted accordingly
+And do not forget to implement the search bar functionality
+ -->
+<html>
+<head>
+	<title>SEN Group 32</title>
+	
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+	<script src="https://kit.fontawesome.com/3c90917715.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/citydash.css')}}">
+
+	<!-- For chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+ 	
+</head>
+
+{% if (len == 2) %}
+<body>
+{% else %}
+<body onload="Javascript:updateChart();">
+{% endif %}
+<!--Contributor-Jack-2001-->
+	<nav class="navbar navbar-expand-sm navbar-custom">
+    <p id="aqi-nav-title">AQI
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
+        <img style="padding-left: 60px;padding-bottom: 15px;" src="https://img.icons8.com/android/30/000000/menu.png"/>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarCustom">
+        <div class="conatiner" id="btns">
+	        <ul class="navbar-nav">
+
+	            <li class="nav-item active" id="home-btn">
+	                <a class="nav-link" href="/maindashboard" target="top">Home</a>
+	            </li>
+	            <li class="nav-item dropdown" id="compare-btn">
+	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" target="top"> Compare </a>
+	                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	                    <a class="dropdown-item" href="/cityvscity" target="top">City vs City</a>
+	                    <div class="dropdown-divider"></div>
+	                    <a class="dropdown-item" href="/statevsstate" target="top">State vs State</a>
+	                    
+	                </div>
+	            </li>
+	            <li class="nav-item active" id="myloc-btn">
+	                <a class="nav-link" href="/mylocation" target="top">My Location</a>
+	            </li>
+
+	        </ul>
+	        </div>
+          <div id="search-bar">
+          	
+		 <form method="POST" class="form-inline" onsubmit="checkinp()" action="" id="form-search">
+    		<input class="form-control mr-sm-2" type="search" name="name" placeholder="Search" aria-label="Search">
+    		<button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
+  		</form>
+
+          </div>
+    </div>
+</nav>
+
+{% if (len == 2) %}
+  <div style="z-index: 10; color: red; text-align: center;"> {{historyData[1]}}</div>
+{% else %}
+<div class="container" id="city-title">{{citydata[0]["city_name"]}}</div>
+
+<div class="container" id="aqi-city">
+	AQI : {{citydata[0]["cur_aqi"]}}
+</div>
+<br>\
+<br>
+
+
+  <ul class="display-container">
+
+<!-- this attribute data-note is extremely important and it should be set as the AQI of city -->
+    <li class="note-display" data-note={{citydata[0]["cur_aqi"]}}>
+      <div class="circle">
+        <svg width="84" height="84" class="circle__svg">
+          <circle id="jack-circle" cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
+          <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
+        </svg>
+
+        <div class="percent">
+          <span class="percent__int">0</span>
+        </div>
+      </div>
+
+      <span class="label" id="aqi-in-circle">AQI</span>
+    </li>
+  </ul>
+
+<br>
+<div class="container" id="pollutant-title-list">
+	<ul>
+	  <li class="pollutant-title">PM2.5 (ug/m^3)</li>
+	  <li class="pollutant-title">PM10 (ug/m^3)</li>
+	  <li class="pollutant-title">Humidity (%)</li>
+	  <li class="pollutant-title">Temperature (C)</li>
+
+	</ul>
+</div>
+
+<div class="container" id="pollutant-value-list">
+	<ul>
+	  <li class="pollutant-value" id="value1">{{citydata[0]["PM25"]}}</li>
+	  <li class="pollutant-value" id="value2">{{citydata[0]["PM10"]}}</li>
+	  <li class="pollutant-value" id="value3">{{weatherData['humidity']}}</li>
+	  <li class="pollutant-value" id="value4">{{weatherData['temp']}}</li>
+
+	</ul>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+
+<div class="container" id="curve_chart">
+	<div>
+      <select class="form-control float-right " id="changePollutant" onchange="updateChart();" name="changePollutant" style="width:100px; height:40px; position: relative; left: 50px">
+          <option value="aqi">aqi</option>
+          <option value="co">co</option>
+          <option value="no">no</option>
+          <option value="no2">no2</option>
+          <option value="o3">o3</option>
+          <option value="so2">so2</option>
+          <option value="pm2_5">pm2.5</option>
+          <option value="pm10">pm10</option>
+          <option value="nh3">nh3</option>
+      </select>
+    </div>
+
+    <div>
+        <canvas id="line-chart" width="600" height="400" style="z-index: 10; clear: both; position: relative;"></canvas>
+    </div>
+
+    <script>
+      var cityData = {
+      'aqi': {
+          data: [
+            {% for item in historyData[0] %}
+              '{{ item[1] }}',
+            {% endfor %}
+          ],
+          label: "{{historyData[9]}}:AQI",
+          borderColor: "blue",
+          fill: false
+        },
+      'co': {
+          data: [
+            {% for item in historyData[1] %}
+              '{{ item[1] }}',
+            {% endfor %}
+          ],
+          label: "{{historyData[9]}}:CO (ug/m^3)",
+          borderColor: "blue",
+          fill: false
+        },
+      'no': {
+          data: [
+            {% for item in historyData[2] %}
+              '{{ item[1] }}',
+            {% endfor %}
+          ],
+          label: "{{historyData[9]}}:NO (ug/m^3)",
+          borderColor: "blue",
+          fill: false
+        },
+      'no2': {
+          data: [
+            {% for item in historyData[3] %}
+              '{{ item[1] }}',
+            {% endfor %}
+          ],
+          label: "{{historyData[9]}}:NO2 (ug/m^3)",
+          borderColor: "blue",
+          fill: false
+        },
+      'o3': {
+          data: [
+            {% for item in historyData[4] %}
+              '{{ item[1] }}',
+            {% endfor %}
+          ],
+          label: "{{historyData[9]}}:O3 (ug/m^3)",
+          borderColor: "blue",
+          fill: false
+        },
+      'so2': {
+          data: [
+            {% for item in historyData[5] %}
+              '{{ item[1] }}',
+            {% endfor %}
+          ],
+          label: "{{historyData[9]}}:SO2 (ug/m^3)",
+          borderColor: "blue",
+          fill: false
+        },
+      'pm2_5': {
+          data: [
+            {% for item in historyData[6] %}
+              '{{ item[1] }}',
+            {% endfor %}
+          ],
+          label: "{{historyData[9]}}:PM2.5 (ug/m^3)",
+          borderColor: "blue",
+          fill: false
+        },
+      'pm10': {
+          data: [
+            {% for item in historyData[7] %}
+              '{{ item[1] }}',
+            {% endfor %}
+          ],
+          label: "{{historyData[9]}}:PM10 (ug/m^3)",
+          borderColor: "blue",
+          fill: false
+        },
+      'nh3': {
+          data: [
+            {% for item in historyData[8] %}
+              '{{ item[1] }}',
+            {% endfor %}
+          ],
+          label: "{{historyData[9]}}:NH3",
+          borderColor: "blue",
+          fill: false
+        }
+      }
+
+      var myLineChart;
+
+      function updateChart() {
+      var ctx = document.getElementById("line-chart");
+      var e = document.getElementById("changePollutant");
+      // Getting the selected value of dropdown
+      var dd = e.options[e.selectedIndex].value;
+      // Creating dataset
+      var pollutantData = {
+          labels: [ 
+          {% for item in historyData[0] %}
+            '{{ item[0] }}',
+          {% endfor %}
+          ],
+          datasets: [cityData[dd]]
+      }
+      // Clearing chart before assiging new dataset
+      if (myLineChart != undefined) {
+          myLineChart.clear();
+          myLineChart.destroy();
+      }
+
+      myLineChart = new Chart(ctx, {
+          type: "line",
+          data: {
+              labels: pollutantData.labels,
+              datasets: pollutantData.datasets
+          },
+          options: {
+            responsive: false,
+            title: {
+                display: true,
+                text: "{{historyData[9]}}"+" History Data"
+            },
+            scales: {
+              yAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Values",
+                  },
+                },
+              ],
+              xAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Date",
+                  },
+                },
+              ],
+            }
+          }
+        }
+      );
+      // Updating the chart after the  data is set.
+      myLineChart.update();
+    }
+    </script>
+</div>
+
+<div class="container" id="health-tips">
+	<h3>Health Tips</h3>
+	<div>
+		<img class="left-icon" id="icon-1" src="https://img.icons8.com/ios-glyphs/30/000000/beach-soccer.png"/ >
+
+		<img class="right-icon" id="icon-2" src="https://img.icons8.com/material-rounded/30/000000/airodynamic.png"/>
+	</div>
+<br>
+<br>
+	<div>
+		<div class="left-content" id="line-1"> Outdoor activities recommended</div>
+
+		<div class="right-content" id="line-2">Air purifier recommended for sensitive groups</div>
+	</div>
+<br>
+<br>
+<br>
+<br>
+		<div>
+			<img class="left-icon" id="icon-3" src="https://img.icons8.com/ios-glyphs/30/000000/protection-mask.png"/>
+			<img class="right-icon" id="icon-4" src="https://img.icons8.com/ios-filled/30/000000/air-conditioner.png"/>
+		</div>
+<br>
+<br>
+	<div>
+		<div class="left-content" id="line-3"> Pollution Mask required</div>
+
+		<div class="right-content" id="line-4">Ventilation close windows</div>
+	</div>
+</div>
+  <script src="{{ url_for('static', filename='Javascript/citydash.js')}}"></script>
+{% endif %}
+</body>
+</html>
