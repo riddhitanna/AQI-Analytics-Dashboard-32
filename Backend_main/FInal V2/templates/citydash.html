@@ -40,7 +40,7 @@ And do not forget to implement the search bar functionality
 {% endif %}
 <!--Contributor-Jack-2001-->
 	<nav class="navbar navbar-expand-sm navbar-custom">
-    <p id="aqi-nav-title">AQI
+    <p id="aqi-nav-title"><a href="#"> AQI </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
         <img style="padding-left: 60px;padding-bottom: 15px;" src="https://img.icons8.com/android/30/000000/menu.png"/>
     </button>
@@ -109,16 +109,27 @@ And do not forget to implement the search bar functionality
   </ul>
 
 <br>
-<div class="container" id="pollutant-title-list">
+<!-- <div class="container" id="pollutant-title-list">
 	<ul>
-	  <li class="pollutant-title">PM2.5 (ug/m^3)</li>
-	  <li class="pollutant-title">PM10 (ug/m^3)</li>
-	  <li class="pollutant-title">Humidity (%)</li>
-	  <li class="pollutant-title">Temperature (C)</li>
+	  <li class="pollutant-title">PM2.5</li>
+	  <li class="pollutant-title">PM10</li>
+	  <li class="pollutant-title">Humidity</li>
+	  <li class="pollutant-title">Temperature</li>
 
 	</ul>
 </div>
 
+
+
+<div class="container" id="pollutant-value-list">
+  <ul>
+    <li class="pollutant-value" id="value">(ug/m^3)</li>
+    <li class="pollutant-value" id="value6">(ug/m^3)</li>
+    <li class="pollutant-value" id="value7">(%)</li>
+    <li class="pollutant-value" id="value8">(C)</li>
+
+  </ul>
+</div>
 <div class="container" id="pollutant-value-list">
 	<ul>
 	  <li class="pollutant-value" id="value1">{{citydata[0]["PM25"]}}</li>
@@ -128,7 +139,24 @@ And do not forget to implement the search bar functionality
 
 	</ul>
 </div>
+ -->
 
+        <div id="state_table" style="margin-left: 39%;">
+            <table id="st" style="text-align: center;">
+                <tr>
+                    <td style="font-size:smaller;padding-left: 18px;"><b style="font-size: x-large;"> PM2.5 </b><br>ug/m<sup style="font-size: x-small;">3</sup></td>
+                    <td style="font-size:smaller;padding-left: 24px;"><b style="font-size: x-large;"> PM10 </b><br>ug/m<sup style="font-size: x-small;">3</sup></td>
+                    <td style="font-size: smaller;padding-left: 18px;"><b style="font-size: x-large;"> Humidity</b><br><span>&#37;</span></td>
+                    <td style="font-size: smaller;padding-left: 18px;"><b style="font-size: x-large;"> Temperature</b><br><span>&#176;</span>C</td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 14px;">{{citydata[0]["PM25"]}}</td>
+                    <td style="padding-left: 14px;">{{citydata[0]["PM10"]}}</td>
+                    <td style="padding-left: 4px;">{{weatherData['humidity']}}</td>
+                    <td style="padding-left: 4px;">{{weatherData['temp']}}</td>
+                </tr>
+            </table>
+        </div>
 <br />
 <br />
 <br />
