@@ -106,7 +106,7 @@ body{
 
 #district-table{
     width: 40%;
-    margin-left: 32%;
+    margin-left: 28%;
     margin-right: 27%;
     margin-top: 5%;
     margin-bottom: 5%;
@@ -133,7 +133,7 @@ body{
 #dt tbody {
     height: 80%;
     display: block;
-    width: 103%;
+    width: 115%;
     overflow-y: auto;
     overflow-x: auto;
 }
