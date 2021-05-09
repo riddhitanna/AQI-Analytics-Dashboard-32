@@ -16,6 +16,7 @@
 	float: right;
 	padding: 10px;
 }
+
 #btns{
 	 margin: auto;
   	width: 50%;
@@ -30,11 +31,13 @@
 #navbarDropdown{
 	color: black;
 	font-size: 18px;
+
 }
 .navbar{
 	background-color:rgba(202, 202, 202, 0.58);;
 	display: flex;
 }
+
 .navbar-custom .nav-item.active .nav-link{
 	color: #000000;
 	margin: 0 50px;
@@ -44,13 +47,16 @@
     background-color: #00D9E7;
 	
 }
+
 #compare-btn:hover {
 	background-color: #00D9E7;
 }
+
 .navbar-custom .dropdown-item {
     color: #000000;
 	
 }
+
 .navbar-custom .dropdown-item:hover,
 .navbar-custom .dropdown-item:focus {
     background-color: #00D9E7;
@@ -61,11 +67,15 @@ font-style: normal;
 font-weight: normal;
 font-size: 35px;
 line-height: 40px;
+
 }
+
 @media (max-width: 600px) {
+
 	#search-bar{
 		padding: 10px;
 	}
+
 } */
 
 body {margin: 0;}
@@ -98,3 +108,4 @@ ul.topnav li.right {float: right;}
   ul.topnav li.right, 
   ul.topnav li {float: none;}
 }
+
