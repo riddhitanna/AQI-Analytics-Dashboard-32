@@ -2,7 +2,7 @@ table, th, td {
     border: 1px #c4c4c4;
     background-color : rgba(196, 196, 196, 0.2);
     width :  509px;
-    text-align: left;
+    text-align: center;
     padding: 5px;
     font-family: 'Open Sans';
   }
@@ -13,7 +13,7 @@ table, th, td {
     font-style: normal;
     font-size: 93.75%; 
     line-height:127.688%;
-    text-align: left;
+    text-align: center;
   }
 
   h2{
