@@ -1,0 +1,227 @@
+body {
+  background: #e9f4f6;
+}
+
+.mapdiv {
+  display: flex;
+  justify-content: space-around;
+  height: fit-content;
+  align-items: center;
+  height: 600px;
+}
+
+.navbar {
+  width: 100%;
+}
+
+.headerTxt {
+  padding: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+
+.tableclass {
+  align-items: center;
+  padding: 20px;
+  width: 50%;
+}
+
+.mapclass {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+svg {
+  height: 50%;
+  width: 55%;
+}
+
+.mapdiv path {
+  /* fill: #e5e5e5; */
+  stroke: #3399ff;
+  stroke-width: 1px;
+  transition: fill 0.3s;
+}
+
+path:hover {
+  fill: red;
+}
+
+.ValueDisplay {
+  display: flex;
+  margin-bottom: 100px;
+  flex-direction: column;
+  width: fit-content;
+  font-size: 13px;
+  height: fit-content;
+}
+
+.key-value {
+  display: flex;
+  padding: 2px;
+}
+
+.color-1 {
+  height: 20px;
+  width: 25px;
+  background-color: #a9f011;
+  margin-right: 20px;
+}
+
+.color-2 {
+  height: 20px;
+  width: 25px;
+  background-color: #fce514;
+  margin-right: 20px;
+}
+
+.color-3 {
+  height: 20px;
+  width: 25px;
+  background-color: #f8b534;
+  margin-right: 20px;
+}
+
+.color-4 {
+  height: 20px;
+  width: 25px;
+  background-color: #d06a0b;
+  margin-right: 20px;
+}
+
+.color-5 {
+  height: 20px;
+  width: 25px;
+  background-color: #8a2be2;
+  margin-right: 20px;
+}
+
+.color-6 {
+  height: 20px;
+  width: 25px;
+  background-color: #d11818;
+  margin-right: 20px;
+}
+
+table {
+  max-width: 509px;
+  width: 80%;
+  height: 411px;
+  /* height: 100%; */
+}
+
+@media (max-width: 600px) {
+  .mapdiv {
+    flex-direction: column;
+    flex-direction: column-reverse;
+  }
+
+  svg {
+    height: 80%;
+    width: 80%;
+  }
+
+  .mapclass {
+    margin-top: 50px;
+    max-width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tableclass {
+    align-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    /* padding: 20px; */
+    width: 100%;
+  }
+
+  .headerTxt {
+    padding: 40px;
+    font-size: 30px;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 100px;
+  }
+
+  .ValueDisplay {
+
+    margin-bottom: 20px;
+    width: 100px;
+    font-size: 11px;
+  }
+
+  .color-1,
+  .color-2,
+  .color-3,
+  .color-4,
+  .color-5,
+  .color-6 {
+    height: 11px;
+    width: 12px;
+  }
+
+  table {
+    max-width: 320px;
+    width: 80%;
+    height: 411px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1000px) {
+  .color-1,
+  .color-2,
+  .color-3,
+  .color-4,
+  .color-5,
+  .color-6 {
+    height: 13px;
+    width: 15px;
+  }
+
+  .mapdiv {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+
+  .tableclass {
+    align-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    /* padding: 20px; */
+    width: 100%;
+  }
+
+  
+
+  .mapclass {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+
+  table {
+    width: 80%;
+    height: 411px;
+  }
+}
+.aqi {
+  font-family: "Open Sans";
+  font-weight: 400;
+  text-align: center;
+  font-style: normal;
+}
