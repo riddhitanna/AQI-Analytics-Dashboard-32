@@ -6,17 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	
-	<script src="https://kit.fontawesome.com/3c90917715.js" crossorigin="anonymous"></script>
+    
+
 
         <title>
             State
         </title>
-        <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
         <link rel="stylesheet" href="State_CSS.css">
 
         
@@ -25,7 +20,7 @@
     <body>
 
 	<nav class="navbar navbar-expand-sm navbar-custom">
-        <p id="aqi-nav-title">AQI
+        <p id="aqi-nav-title"><a href="">AQI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
             <img style="padding-left: 60px;padding-bottom: 15px;" src="https://img.icons8.com/android/30/000000/menu.png"/>
         </button>
@@ -98,12 +93,12 @@
         <div id="state_table">
             <table id="st">
                 <tr>
-                    <td><b> PM2.5 </b></td>
-                    <td><b> PM10 </b></td>
-                    <td><b> Humidity </b></td>
-                    <td><b> Temprature </b></td>
+                    <td style="font-size:smaller;"><b style="font-size: x-large;"> PM2.5 </b><br>ug/m<sup style="font-size: x-small;">3</sup></td>
+                    <td style="font-size:smaller;"><b style="font-size: x-large;"> PM10 </b><br>ug/m<sup style="font-size: x-small;">3</sup></td>
+                    <td style="font-size: smaller;"><b style="font-size: x-large;"> Humidity</b><br><span>&#37;</span></td>
+                    <td style="font-size: smaller;"><b style="font-size: x-large;"> Temperature</b><br><span>&#176;</span>C</td>
                 </tr>
-                <tr>
+                <tr> 
                     <td> PM2.5 val</td>
                     <td> PM10 val</td>
                     <td> H val</td>
@@ -116,16 +111,16 @@
                 <table id="dt">
                     <tr>
                         <td><b>CITIES</b></td>
-                        <td><b>STATUS</b></td>
-                        <td><b>AQI</b></td>
-                        <td><b>PM2.5</b></td>
-                        <td><b>PM10</b></td>
-                        <td><b>CO</b></td>
-                        <td><b>$$ {SO_{2}} $$</b></td>
+                        <td><b style="font-size:large;">STATUS</b></td>
+                        <td><b style="font-size:large;">AQI</b></td>
+                        <td style="font-size:smaller;"><b style="font-size:large;"> PM2.5 </b><br>ug/m<sup style="font-size: x-small;">3</sup></td>
+                        <td style="font-size:smaller;"><b style="font-size:large;"> PM10 </b><br>ug/m<sup style="font-size: x-small;">3</sup></td>
+                        <td style="font-size: smaller;"><b style="font-size: large;">CO</b><br><span style="font-size: x-small;">ppm</span></td>
+                        <td style="font-size: smaller;"><b style="font-size: large;">SO<sub style="font-size: x-small;">2</sub></b><br><span style="font-size: x-small;">ppb</span></td>
                     </tr>
                     <!-- Add district in for loop here-->
                     <tr>
-                        <td>C1</td>
+                        <td><a href="">C1</a></td>
                         <td>Healthy</td>
                         <td>12</td>
                         <td>12.5</td>
@@ -134,7 +129,7 @@
                         <td>12</td>
                     </tr>
                     <tr>
-                        <td>C1</td>
+                        <td><a href="">C1</a></td>
                         <td>Healthy</td>
                         <td>12</td>
                         <td>12.5</td>
@@ -143,7 +138,7 @@
                         <td>12</td>
                     </tr>
                     <tr>
-                        <td>C1</td>
+                        <td><a href="">C1</a></td>
                         <td>Healthy</td>
                         <td>12</td>
                         <td>12.5</td>
@@ -152,7 +147,7 @@
                         <td>12</td>
                     </tr>
                     <tr>
-                        <td>C1</td>
+                        <td><a href="">C1</a></td>
                         <td>Healthy</td>
                         <td>12</td>
                         <td>12.5</td>
@@ -161,7 +156,7 @@
                         <td>12</td>
                     </tr>
                     <tr>
-                        <td>C1</td>
+                        <td><a href="">C1</a></td>
                         <td>Healthy</td>
                         <td>12</td>
                         <td>12.5</td>
@@ -170,7 +165,7 @@
                         <td>12</td>
                     </tr>
                     <tr>
-                        <td>C1</td>
+                        <td><a href="">C1</a></td>
                         <td>Healthy</td>
                         <td>12</td>
                         <td>12.5</td>
@@ -179,7 +174,7 @@
                         <td>12</td>
                     </tr>
                     <tr>
-                        <td>C1</td>
+                        <td><a href="">C1</a></td>
                         <td>Healthy</td>
                         <td>12</td>
                         <td>12.5</td>
@@ -188,7 +183,7 @@
                         <td>12</td>
                     </tr>
                     <tr>
-                        <td>C1</td>
+                        <td><a href="">C1</a></td>
                         <td>Healthy</td>
                         <td>12</td>
                         <td>12.5</td>
@@ -197,7 +192,7 @@
                         <td>12</td>
                     </tr>
                     <tr>
-                        <td>C1</td>
+                        <td><a href="">C1</a></td>
                         <td>Healthy</td>
                         <td>12</td>
                         <td>12.5</td>
@@ -206,7 +201,7 @@
                         <td>12</td>
                     </tr>
                     <tr>
-                        <td>C1</td>
+                        <td><a href="">C1</a></td>
                         <td>Healthy</td>
                         <td>12</td>
                         <td>12.5</td>
@@ -225,6 +220,11 @@
             <div id='bargraph-4'></div>
         </div> -->
         <script src='State_JS.js'></script>
-    </body>
 
+    </body>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+	<script src="https://kit.fontawesome.com/3c90917715.js" crossorigin="anonymous"></script>
 </html>
