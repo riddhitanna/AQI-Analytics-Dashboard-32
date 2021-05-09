@@ -16,12 +16,12 @@ body{
 
 
 .nav-link{
-	font-size: 20px;
+	font-size: 125%;
 }
 
 #btns{
-	 margin-left: 10%;
-  	width: 50%;
+	 margin-left: 5%;
+  	width: 70%;
 }
 #home-btn{
 	padding-right: 15px;
@@ -58,7 +58,40 @@ body{
 	font-family: "Open Sans";
 	font-style: normal;
 	font-weight: normal;
-	font-size: 35px;
+	font-size: 218.75%;
 	line-height: 48px;
 
+}
+
+@media screen and (max-width: 600px) {
+	#search-bar{
+		float: left;
+		padding-left: 20px;
+	}
+
+	#aqi-nav-title{
+		font-family: "Open Sans";
+		font-style: normal;
+		font-weight: normal;
+		font-size: 200.75%;
+		line-height: 48px;
+		width: 100%;
+	}
+
+	button{
+		float: right;
+		padding: 0;
+		margin: 0;		
+	}
+
+	.nav-link{
+		font-size: 0.9em;
+	}
+}
+
+
+@media (min-width: 600px) and (max-width: 900px) {
+	.nav-link{
+		font-size: 1em;
+	}
 }
