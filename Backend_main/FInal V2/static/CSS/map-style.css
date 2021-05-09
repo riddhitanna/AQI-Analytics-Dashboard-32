@@ -23,13 +23,13 @@ body {
 }
 
 .tableclass {
-  align-items:center;
+  align-items: center;
   padding: 20px;
-  width : 50% ;
+  width: 50%;
 }
 
 .mapclass {
-  width: 100% ;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
@@ -175,9 +175,6 @@ table {
 }
 
 @media (min-width: 600px) and (max-width: 1000px) {
-
-  
-
   .color-1,
   .color-2,
   .color-3,
@@ -187,6 +184,7 @@ table {
     height: 13px;
     width: 15px;
   }
+
   .mapdiv {
     display: flex;
     flex-direction: column;
@@ -215,19 +213,15 @@ table {
     align-items: center;
     margin-bottom: 60px;
   }
+
   table {
-    
     width: 80%;
     height: 411px;
-    /* height: 100%; */
   }
 }
-.aqi
-{
-  
-  font-family: 'Open Sans';
-  font-weight : 400;
+.aqi {
+  font-family: "Open Sans";
+  font-weight: 400;
   text-align: center;
- 
-  font-style : normal;
+  font-style: normal;
 }
