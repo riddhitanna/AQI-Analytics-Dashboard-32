@@ -42,11 +42,11 @@ Follow these steps to clone this repository into your local machine and run the 
 
 6. The terminal or command prompt output will look like this and the website will be hosted at the following URL:
 
-![terminal output](screenshot_2.png)
+![terminal output](images/screenshot_2.png)
  
 7. Simply click on the URL or copy it in your Chrome browser and the website will be loaded and the front page will be displayed as follows:
 
-![main dashboard](screenshot_1.png)
+![main dashboard](images/screenshot_1.png)
 
  
 ---
